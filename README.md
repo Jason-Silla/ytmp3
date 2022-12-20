@@ -18,8 +18,8 @@ Save this to the variable dirToStorage. By default, it will save the downloads t
               "link": "[link to playlist on YouTube]"
             },
             {
-              "name": "[name of playlist"],
-              "link": "[name of playlist"]
+              "name": "[name of playlist]",
+              "link": "[name of playlist]"
             }
           ]
         }
