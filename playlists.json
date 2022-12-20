@@ -1,7 +1,12 @@
 {
-    "albums": [
-        {
-            
-        }
-    ]
-}
+   "playlists": [
+     {
+       "name": "[name of playlist]",
+       "link": "[link to playlist on YouTube]"
+     },
+     {
+       "name": "[name of playlist"],
+       "link": "[name of playlist"]
+     }
+   ]
+ }
