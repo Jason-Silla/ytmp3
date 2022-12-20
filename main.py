@@ -7,38 +7,38 @@ import json
 # Before running program enter the following information
 # Hold option on folder of storage and click copy as directory
 # Or put dot to save to this directory
-dirToStorage = '/Users/jasonsilla/Desktop/Music/Albums'
+dirToStorage = '.'
 
-# Also create an albums.json file with the albums you want to download
+# Also create an playlists.json file with the playlists you want to download
 # (file with example included)
 ###
 
-with open('albums.json', 'r') as file:
-    albums = json.load(file)['albums']
+with open('playlists.json', 'r') as file:
+    playlists = json.load(file)['playlists']
 
-for album in albums:
-    print(f'Downloading {album["name"]}')
-    # get the album link and put it in an object
-    p = Playlist(album['link'])
+for playlist in playlists:
+    print(f'Downloading {playlist["name"]}')
+    # get the playlist link and put it in an object
+    p = Playlist(playlist['link'])
 
-    albumLength = p.length
+    playlistLength = p.length
     downloadedNum = 0
 
     # create a file for the album to go in
-    storage = dirToStorage + '/' + album['name']
+    storage = dirToStorage + '/' + playlist['name']
     os.mkdir(storage)
 
-    print(f'{str(downloadedNum).zfill(len(str(albumLength)))} / {str(albumLength).zfill(len(str(albumLength)))}', flush=True, end='')
-    print('\b' * (((len(str(albumLength)) * 2) + 1)), flush=True, end='')
+    print(f'{str(downloadedNum).zfill(len(str(playlistLength)))} / {str(playlistLength).zfill(len(str(playlistLength)))}', flush=True, end='')
+    print('\b' * (((len(str(playlistLength)) * 2) + 1)), flush=True, end='')
 
-    for song in p.videos:
-        # get the song and filter only the audio
+    for video in p.videos:
+        # get the song and filter only the audio ***(change to false to get video)***
         songFile = song.streams.filter(only_audio=True).first()
         # download the song
         finalFile = songFile.download(output_path=storage)
         # splits the song into the base (file name) and extenstion (eg file.txt file is base .txt is ext)
         base, ext = os.path.splitext(finalFile)
-        # makes the new file name the base but changes the extension to .mp3
+        # makes the new file name the base but changes the extension to .mp3 ***(if downloading video, change .mp3 to .mp4)***
         newFile = base + '.mp3'
         # renames the file
         os.rename(finalFile, newFile)
