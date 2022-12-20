@@ -24,7 +24,7 @@ for playlist in playlists:
     playlistLength = p.length
     downloadedNum = 0
 
-    # create a file for the album to go in
+    # create a folder for the playlist to go in
     storage = dirToStorage + '/' + playlist['name']
     os.mkdir(storage)
 
