@@ -38,4 +38,31 @@ Make sure to add a comma at the end of the previous section like in the example.
 
 ---------------------
 
-3) Run the program by typing "python3 main.py" into the terminal while the terminal is in the directory of the file.
+3) Install pytube
+
+Go to the terminal on your computer and type "pip3 install pytube". This will install the latest version of pytube onto your computer.
+
+---------------------
+
+4) Fix pytube code
+
+Type into the terminal "pip3 show pytube". Navigate to that directory on your computer. Open cipher.py file and go to line 264. Replace function_patterns array with this one:
+
+        function_patterns = [
+            # https://github.com/ytdl-org/youtube-dl/issues/29326#issuecomment-865985377
+            # https://github.com/yt-dlp/yt-dlp/commit/48416bc4a8f1d5ff07d5977659cb8ece7640dcd8
+            # var Bpa = [iha];
+            # ...
+            # a.C && (b = a.get("n")) && (b = Bpa[0](b), a.set("n", b),
+            # Bpa.length || iha("")) }};
+            # In the above case, `iha` is the relevant function name
+            r'a\.[a-zA-Z]\s*&&\s*\([a-z]\s*=\s*a\.get\("n"\)\)\s*&&.*?\|\|\s*([a-z]+)',
+            r'\([a-z]\s*=\s*([a-zA-Z0-9$]+)(\[\d+\])?\([a-z]\)',
+            r'\([a-z]\s*=\s*([a-zA-Z0-9$]+)(\[\d+\])\([a-z]\)',
+        ]
+
+Save the file.
+
+---------------------
+
+5) Run the program by typing "python3 main.py" into the terminal while the terminal is in the directory of the file.
