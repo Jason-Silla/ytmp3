@@ -31,7 +31,7 @@ for playlist in playlists:
     print(f'{str(downloadedNum).zfill(len(str(playlistLength)))} / {str(playlistLength).zfill(len(str(playlistLength)))}', flush=True, end='')
     print('\b' * (((len(str(playlistLength)) * 2) + 1)), flush=True, end='')
 
-    for video in p.videos:
+    for song in p.videos:
         # get the song and filter only the audio ***(change to false to get video)***
         songFile = song.streams.filter(only_audio=True).first()
         # download the song
